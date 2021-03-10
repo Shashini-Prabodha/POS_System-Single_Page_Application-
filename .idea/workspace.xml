@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f0dd610f-59a8-44e1-ad5f-b48991307aca" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1odsOjGO4NuiVzGtTItHrqLcfpZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bootstrap-5.0.0-beta1-dist/bootstrap-5.0.0-beta1-dist" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Facets" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\sem 2\Boostrap\Boostrap_POS_System\src\assests\icon" />
+      <recent name="E:\sem 2\Boostrap\Boostrap_POS_System\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\sem 2\Boostrap\Boostrap_POS_System\assests" />
+      <recent name="E:\sem 2\Boostrap\Boostrap_POS_System" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f0dd610f-59a8-44e1-ad5f-b48991307aca" name="Default Changelist" comment="" />
+      <created>1613627771534</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613627771534</updated>
+      <workItem from="1613627774752" duration="468000" />
+      <workItem from="1613628314537" duration="329000" />
+      <workItem from="1613628703760" duration="3206000" />
+      <workItem from="1613632289717" duration="11736000" />
+      <workItem from="1613654351192" duration="9646000" />
+      <workItem from="1613744053846" duration="8317000" />
+      <workItem from="1613756075918" duration="6331000" />
+      <workItem from="1613802487169" duration="18559000" />
+      <workItem from="1613823852848" duration="4192000" />
+      <workItem from="1613829843497" duration="5725000" />
+      <workItem from="1613918876377" duration="668000" />
+      <workItem from="1613963211308" duration="19000" />
+      <workItem from="1615117807344" duration="975000" />
+      <workItem from="1615130315605" duration="616000" />
+      <workItem from="1615258881932" duration="621000" />
+      <workItem from="1615270952070" duration="501000" />
+      <workItem from="1615346836823" duration="8268000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="395" y="96" key="#Inspections" timestamp="1613745193764">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="395" y="96" key="#Inspections/0.0.1536.834@0.0.1536.834" timestamp="1613745193764" />
+    <state x="501" y="159" key="FileChooserDialogImpl" timestamp="1615361704069">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="501" y="159" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1615361704069" />
+    <state x="277" y="0" key="SettingsEditor" timestamp="1615361762635">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="277" y="0" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1615361762635" />
+    <state x="209" y="101" key="new project wizard" timestamp="1613628721800">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="209" y="101" key="new project wizard/0.0.1536.834@0.0.1536.834" timestamp="1613628721800" />
+  </component>
+</project>

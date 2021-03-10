@@ -1,0 +1,118 @@
+
+body {
+    overflow-x: hidden;
+    color: white;
+}
+
+#navbar {
+    z-index: 999;
+
+}
+
+.carousel-indicators button {
+    width: 60px;
+    height: 3px;
+    display: flex;
+    margin: 5px;
+    justify-content: space-between;
+    border: transparent;
+}
+
+#carouselExampleIndicators .carousel-control-prev {
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+#carouselExampleIndicators .carousel-control-next {
+    background: transparent;
+    border: 1px solid transparent;
+
+}
+
+.carousel-item {
+    width: 100%;
+    height: 100%;
+}
+
+.text-white img {
+    width: 45px;
+    height: 45px;
+}
+
+.text-white {
+    font-family: "Dancing Script";
+}
+
+.nav, .nav_right {
+    text-decoration: none;
+    color: #6c757d;
+    border: 1px solid transparent;
+
+}
+
+.nav:hover, .nav_right:hover {
+    color: white;
+    right: 0;
+    border: 1px solid transparent;
+
+}
+
+.nav_right {
+    right: 0;
+
+}
+
+.logo {
+    color: white;
+    font-size: 50px;
+    position: absolute;
+}
+
+.h5car {
+
+    right: 25%;
+    left: 25%;
+    font-family: "Dancing Script";
+
+}
+
+.container-sm {
+    padding: 10px;
+}
+
+.input-group {
+    position: absolute;
+    left: 15%;
+    top: 32%;
+}
+
+
+.card {
+    background-color: #1a1a1a;
+    transition: .3s ease;
+
+}
+
+.card-footer > button {
+    position: absolute;
+    left: 50%;
+    bottom: -2%;
+}
+
+.card:hover {
+    transform: scale(1.02);
+    transition: .3s ease;
+
+}
+
+.footer{
+    height: 4rem;
+    background: black;
+    color: white;
+    font-family: "Times New Roman";
+    font-size: 3rem;
+    position: absolute;
+}
+.fontSinhala{
+    font-family: "Achintha";
+}
