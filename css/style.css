@@ -1,0 +1,52 @@
+#saveCust, #clearCust, #delCust,#updateCust,#saveItem,#delItem,#updateItem,#clearItem{
+    background: transparent;
+    border: #0089b3 2px solid;
+    color: #0089b3;
+    transition: all 0.3s ease;
+    font-family: 'Forte';
+    font-size: 17px;
+}
+
+#delCust ,#delItem{
+    border: #ff003f 2px solid;
+    color: #ff003f;
+}
+#updateCust,#updateItem {
+    border: #cdac00 2px solid;
+    color: #f5b30e;
+}
+
+#clearCust,#clearItem {
+    border: #5be800 2px solid;
+    color: #5be800;
+}
+
+#saveCust:hover ,#saveItem:hover{
+    background: rgba(67, 175, 212, 0.53);
+    color: black;
+    transition: all 0.3s ease;
+}
+#clearCust:hover,#clearItem:hover {
+    background: rgba(112, 243, 79, 0.53);
+    color: black;
+    transition: all 0.3s ease;
+}
+#delCust:hover,#delItem:hover {
+    background: rgba(255, 80, 93, 0.53);
+    color: black;
+    transition: all 0.3s ease;
+}
+#updateCust:hover,#updateItem:hover {
+    background: rgba(255, 203, 12,0.5);
+    color: black;
+    transition: all 0.3s ease;
+}
+#customerSection tbody tr ,#ItemSection tbody tr, #OrderSection tbody tr{
+    transition: all 0.3s ease;
+}
+
+#customerSection tbody tr:hover,#ItemSection tbody tr:hover, #OrderSection tbody tr:hover {
+    background: rgba(255, 255, 255, 0.54);
+    color: black;
+    transition: all 0.3s ease;
+}
