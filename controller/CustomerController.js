@@ -1,3 +1,7 @@
+$('#custLink').click(function () {
+    $('#customerSection').fadeIn(1000);
+});
+
 $('#floatingInputCID').on('keyup', function (event) {
 
         if (event.key == 'Enter') {
@@ -64,10 +68,14 @@ $('#btnCustomerSearch').on('keyup', function (event) {
         if (event.key == 'Enter') {
 
             let cust = searchCustomer($('#txtSearchCust').val());
-            $('#floatingInputCID').val(cust.getCustomerID());
-            $('#floatingInputCName').val(cust.getCustomerName());
-            $('#floatingInputAddr').val(cust.getCustomerAddr());
-            $('#floatingInputTP').val(cust.getCustomerTP());
+            if (cust == null) {
+                alert("Can't Found Customer")
+            } else {
+                $('#floatingInputCID').val(cust.getCustomerID());
+                $('#floatingInputCName').val(cust.getCustomerName());
+                $('#floatingInputAddr').val(cust.getCustomerAddr());
+                $('#floatingInputTP').val(cust.getCustomerTP());
+            }
         }
     }
 );
@@ -169,24 +177,8 @@ function saveCustomer(cid, cname, addr, tp) {
                             // $('#floatingInputCID').attr('disabled', 'disabled');
 
                         })
+                        dblclickEvent();
 
-                        //dbl click event to delete
-                        $('#custTable tr').on('dblclick', function () {
-                            let cusID = $("#floatingInputCID").val();
-
-                            let option = confirm(`Do you want to Deletd ID:${cusID}`);
-                            if (option) {
-                                $(this).remove();
-
-                                let res = deleteCustomer(cusID);
-                                if (res) {
-                                    alert("Customer Deleted");
-                                    clearAllCustomerText();
-                                } else {
-                                    alert("Delete Failed")
-                                }
-                            }
-                        });
 
                         return true;
                     }
@@ -344,7 +336,7 @@ function loadCustomertoTheTable() {
 
 //clear all customers text
 function clearAllCustomerText() {
-    $('#floatingInputCID').val('');
+    $('#floatingInputCID').val(genatareCID());
     $('#floatingInputCName').val('');
     $('#floatingInputAddr').val('');
     $('#floatingInputTP').val('');
@@ -429,4 +421,24 @@ function genatareCID() {
 }
 
 $('#floatingInputCID').val('C1');
+
+function dblclickEvent() {
+    //dbl click event to delete
+    $('#custTable tr').on('dblclick', function () {
+        let cusID = $("#floatingInputCID").val();
+
+        let option = confirm(`Do you want to Deletd ID:${cusID}`);
+        if (option) {
+            $(this).remove();
+
+            let res = deleteCustomer(cusID);
+            if (res) {
+                alert("Customer Deleted");
+                clearAllCustomerText();
+            } else {
+                alert("Delete Failed")
+            }
+        }
+    });
+}
 

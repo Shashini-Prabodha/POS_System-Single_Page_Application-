@@ -2,11 +2,16 @@ setVisibility('block', 'none', 'none', 'none');
 
 let navItem = document.getElementsByTagName('h6');
 navItem[0].style.cursor = 'pointer';
+navItem[1].style.cursor = 'pointer';
 navItem[2].style.cursor = 'pointer';
 navItem[3].style.cursor = 'pointer';
 navItem[4].style.cursor = 'pointer';
 
 navItem[0].addEventListener('click', function () {
+    setVisibility('block', 'none', 'none', 'none');
+
+});
+navItem[1].addEventListener('click', function () {
     setVisibility('block', 'none', 'none', 'none');
 
 });

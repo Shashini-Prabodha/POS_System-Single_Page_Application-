@@ -17,17 +17,16 @@
 <body class="bg-dark">
 
 <!--nav bar-->
-
 <div class="container-fluid position-fixed" style="z-index:999; padding: 0">
 
     <div class="collapse " id="navbarToggleExternalContent">
         <div class="bg-dark p-4 " style="margin: 0;padding: 0;">
             <h5 class="text-white h5"><img src="assests/icon/splogo.png" alt="..."> SP Cafe</h5>
-            <h6><span class="text-muted"><a class="nav">Home</a></span></h6>
-            <h6><span class="text-muted"><a class="nav" href="#catalouge">Catalogue & Deals</a></span></h6>
+            <h6><span class="text-muted"><a class="nav" id="homeLink">Home</a></span></h6>
+            <h6><span class="text-muted"><a class="nav" id='ctlgLink' href="#catalouge">Catalogue & Deals</a></span></h6>
             <h6><span class="text-muted"><a class="nav" id="orderLink">Order</a></span></h6>
-            <h6><span class="text-muted"><a class="nav">Item</a></span></h6>
-            <h6><span class="text-muted"><a class="nav">Customer</a></span></h6>
+            <h6><span class="text-muted"><a class="nav" id="itemLink">Item</a></span></h6>
+            <h6><span class="text-muted"><a class="nav" id="custLink">Customer</a></span></h6>
 
         </div>
     </div>
@@ -493,7 +492,8 @@
              class="d-block w-100" alt="..." style="width: 100vw ; height: 45vh; object-fit: cover">
         <div class="input-group mb-5 w-75">
             <input type="text" class="form-control" placeholder="Item Name" aria-label="Recipient's username"
-                   aria-describedby="button-addon2" style="height: 3.1rem; border-radius:25px 0 0 0 " id="txtSearchItem">
+                   aria-describedby="button-addon2" style="height: 3.1rem; border-radius:25px 0 0 0 "
+                   id="txtSearchItem">
             <button class="btn btn-outline-secondary btn-dark text-white" type="button" id="btnItemSearch"
                     style="border-radius:0 0 25px 0  ">Search
             </button>
@@ -533,11 +533,13 @@
         </div>
         <div class="foodType">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="typeFood" id="rbtnMeal" onclick="getSelectedRbtn(this.value)" value='Meal' checked>
+                <input class="form-check-input" type="radio" name="typeFood" id="rbtnMeal"
+                       onclick="getSelectedRbtn(this.value)" value='Meal' checked>
                 <label class="form-check-label" for="rbtnMeal">Meal</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="typeFood" id="rbtnDes" onclick="getSelectedRbtn(this.value)" value='Desert'>
+                <input class="form-check-input" type="radio" name="typeFood" id="rbtnDes"
+                       onclick="getSelectedRbtn(this.value)" value='Desert'>
                 <label class="form-check-label" for="rbtnDes">Desert</label>
             </div>
 
@@ -553,45 +555,45 @@
 
         <table class="table text-white" id="tblItem" style="font-family: 'Segoe UI'">
             <h4 class="display-6 m-5 text-center">Item Details</h4>
-           <thead>
-           <tr>
-               <th>Item ID</th>
-               <th>Item Name</th>
-               <th>Unit Price (Rs.)</th>
-               <th>Available</th>
-           </tr>
-           </thead>
+            <thead>
+            <tr>
+                <th>Item ID</th>
+                <th>Item Name</th>
+                <th>Unit Price (Rs.)</th>
+                <th>Available</th>
+            </tr>
+            </thead>
             <tbody></tbody>
-           <!-- <tr>
-                <td>I001</td>
-                <td>Rice</td>
-                <td>350</td>
-                <td>40</td>
-            </tr>
-            <tr>
-                <td>I002</td>
-                <td>Noodles</td>
-                <td>300</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>I003</td>
-                <td>Pasta</td>
-                <td>350</td>
-                <td>35</td>
-            </tr>
-            <tr>
-                <td>I004</td>
-                <td>Biriyani</td>
-                <td>350</td>
-                <td>40</td>
-            </tr>
-            <tr>
-                <td>I005</td>
-                <td>Hoppers</td>
-                <td>100</td>
-                <td>15</td>
-            </tr>-->
+            <!-- <tr>
+                 <td>I001</td>
+                 <td>Rice</td>
+                 <td>350</td>
+                 <td>40</td>
+             </tr>
+             <tr>
+                 <td>I002</td>
+                 <td>Noodles</td>
+                 <td>300</td>
+                 <td>50</td>
+             </tr>
+             <tr>
+                 <td>I003</td>
+                 <td>Pasta</td>
+                 <td>350</td>
+                 <td>35</td>
+             </tr>
+             <tr>
+                 <td>I004</td>
+                 <td>Biriyani</td>
+                 <td>350</td>
+                 <td>40</td>
+             </tr>
+             <tr>
+                 <td>I005</td>
+                 <td>Hoppers</td>
+                 <td>100</td>
+                 <td>15</td>
+             </tr>-->
 
         </table>
     </form>
@@ -614,16 +616,18 @@
         <div class="row mt-4">
             <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
                 <div class="card" id="invoiceDetailCard">
-                    <div class="card-header text-center display-6" >Invoice Details</div>
+                    <div class="card-header text-center display-6">Invoice Details</div>
                     <div class="card-body">
                         <div class="row mt-4">
                             <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
                                 <label>Order ID</label>
-                                <input type="text" class="form-control" id="orderId">
+                                <input type="text" class="form-control" id="orderId" disabled>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
                                 <label>Order Date</label>
                                 <input type="date" class="form-control" id="orderDate">
+                                <span class="control-error" id="lblOrdDate"></span>
+
                             </div>
                         </div>
                         <div class="row mt-4">
@@ -631,9 +635,11 @@
                                 <label>Customer ID</label>
                                 <select class="form-select" aria-label="Default select example" id="cmbCustID">
                                     <option selected>-Select Customer</option>
-<!--                                    <option value="1">C001</option>-->
-<!--                                    <option value="2">C002</option>-->
-<!--                                    <option value="3">C003</option>-->
+                                    <span class="control-error" id="lblCustomerID"></span>
+
+                                    <!--                                    <option value="1">C001</option>-->
+                                    <!--                                    <option value="2">C002</option>-->
+                                    <!--                                    <option value="3">C003</option>-->
                                 </select>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
@@ -663,29 +669,33 @@
                         <div class="row mt-4">
                             <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
                                 <label>Total (Rs.)</label>
-                                <input type="text" class="form-control" id="total" disabled>
+                                <input type="text" class="form-control" id="total" value="0.0"disabled>
 
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
                                 <label>Sub Total (Rs.)</label>
-                                <input type="text" class="form-control" id="subTot" disabled>
+                                <input type="text" class="form-control" id="subTot" value="0.0" disabled>
                             </div>
 
                         </div>
                         <div class="row mt-4">
                             <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
                                 <label>Cash (Rs.)</label>
-                                <input type="text" class="form-control" id="cash">
+                                <input type="text" class="form-control" id="cash" value="0.0">
+                                <span class="control-error" id="lblCash"></span>
 
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
                                 <label>Discount (%)</label>
-                                <input type="text" class="form-control" id="discount">
+                                <input type="text" class="form-control" id="discount" value="0.0">
+                                <span class="control-error" id="lblDis"></span>
                             </div>
                             <div class="row mt-4">
                                 <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
                                     <label>Balance (Rs.)</label>
                                     <input type="text" class="form-control" id="balance" disabled>
+                                    <span class="control-error" id="lblBalance"></span>
+
                                 </div>
                                 <div class="col-lg-6 col-md-12 col-sm-12 mt-4" style="align-self: flex-end;">
                                     <button type="button" class="btn btn-success " id="btnPlaceOrder">Place Order
@@ -705,12 +715,13 @@
                         <div class="row mt-4">
                             <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
                                 <label>Item ID</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <input type="text" class="form-control" id="hiddnitemID" disabled hidden>
+                                <select class="form-select" aria-label="Default select example" id="cmbItem">
                                     <option selected>-Select Item</option>
-                                  <!--  <option value="1">I001</option>
-                                    <option value="2">I002</option>
-                                    <option value="3">I003</option>-->
+                                    <!--  <option value="1">I001</option>                                      <option value="2">I002</option>
+                                      <option value="3">I003</option>-->
                                 </select>
+                                <span class="control-error" id="lblOItemID"></span>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
                                 <label>Item Name</label>
@@ -721,10 +732,10 @@
 
                             <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
                                 <label>Available Qty</label>
-                                <input type="text" class="form-control" id="avilable" disabled>
+                                <input type="text" class="form-control" id="available" disabled>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
-                                <label>Unit Price</label>
+                                <label>Unit Price(Rs.)</label>
                                 <input type="text" class="form-control" id="uprice" disabled>
                             </div>
                         </div>
@@ -732,12 +743,13 @@
                             <div class="col-lg-6 col-md-12 col-sm-12 mt-4">
                                 <label>Buy Qty</label>
                                 <input type="text" class="form-control" id="buyqty">
+                                <span  class="control-error" id="lblBuyQty"></span>
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 justify-content-between mt-4"
                                  style="align-self: flex-end;">
                                 <button type="button" class="btn btn-danger" id="btnAddToCart">Add to cart</button>
-                                <button type="button" class="btn btn-warning" id="btnUpdateCart">Update</button>
-                                <button type="button" class="btn btn-secondary" id="btnCartItemRemove">Delete</button>
+<!--                                <button type="button" class="btn btn-warning" id="btnUpdateCart">Update</button>-->
+<!--                                <button type="button" class="btn btn-secondary" id="btnCartItemRemove">Delete</button>-->
                             </div>
                         </div>
                     </div>
@@ -745,7 +757,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12">
-                <table class="table text-white" style="font-family: 'Segoe UI'">
+                <table class="table text-white" style="font-family: 'Segoe UI'" id="tblOrderItem">
                     <h4 class="display-6 m-5 text-center">Cart Details</h4>
                     <thead>
                     <tr>
@@ -757,7 +769,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+          <!--          <tr>
                         <td>I001</td>
                         <td>Rice</td>
                         <td>350</td>
@@ -777,7 +789,7 @@
                         <td>350</td>
                         <td>35</td>
                         <td>1</td>
-                    </tr>
+                    </tr>-->
                     </tbody>
 
                 </table>
@@ -802,6 +814,7 @@
 <script src="dto/CustomerDTO.js"></script>
 <script src="dto/ItemDTO.js"></script>
 <script src="dto/OrderDTO.js"></script>
+<script src="dto/CartDTO.js"></script>
 <script src="db/DB.js"></script>
 <script src=""></script>
 <script>
@@ -810,16 +823,16 @@
          alert("")
      }*/
 
-    $('#btnNav').on('mouseenter',function () {
-        $('#btnNav').trigger('click');
-    });
-    $('.collapse').on('mouseleave',function () {
-        $('#btnNav').trigger('click');
+    $('#homeLink').click(function () {
+        $('#foodSection').fadeIn(1000);
     });
 
-
-
-
+    $('#btnNav').on('mouseenter', function () {
+        $('#btnNav').trigger('click');
+    });
+    $('.collapse').on('mouseleave', function () {
+        $('#btnNav').trigger('click');
+    });
 
 </script>
 

@@ -19,17 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0dd610f-59a8-44e1-ad5f-b48991307aca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assests/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assests/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/CustomerController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/CustomerController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/ItemController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ItemController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/OrderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/OrderController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto/ItemDTO.js" beforeDir="false" afterPath="$PROJECT_DIR$/dto/ItemDTO.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto/OrderDTO.js" beforeDir="false" afterPath="$PROJECT_DIR$/dto/OrderDTO.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="f0dd610f-59a8-44e1-ad5f-b48991307aca" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,7 +121,9 @@
       <workItem from="1616217288716" duration="6514000" />
       <workItem from="1616244083235" duration="3325000" />
       <workItem from="1616247730695" duration="6476000" />
-      <workItem from="1616254538796" duration="13657000" />
+      <workItem from="1616254538796" duration="14518000" />
+      <workItem from="1616306153107" duration="6842000" />
+      <workItem from="1616321231008" duration="27313000" />
     </task>
     <servers />
   </component>
@@ -149,5 +141,35 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/controller/ItemController.js</url>
+          <line>245</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/controller/CustomerController.js</url>
+          <line>148</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/controller/OrderController.js</url>
+          <line>139</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/controller/OrderController.js</url>
+          <line>331</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

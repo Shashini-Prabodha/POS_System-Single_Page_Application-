@@ -1,20 +1,34 @@
-function Order(oid, cid, date, total) {
+function OrderDTO(oid, cid,itmid,qty, date, total) {
     var __oid=oid;
     var __cid=cid;
+    var __itmid=itmid;
+    var __qty=qty;
     var __date=date;
     var __total=total;
 
-    this.getOrdoid=function (){
+    this.getOrderid=function (){
         return __oid;
     }
     this.setOrderoid=function (newOid) {
         __oid=newOid;
     }
     this.getCustId=function (){
-        return __oid;
+        return __cid;
     }
-    this.setCustId=function (newOid) {
-        __oid=newOid;
+    this.setCustId=function (newCid) {
+        __cid=newCid;
+    }
+    this.getItemId=function (){
+        return __itmid;
+    }
+    this.setItemtId=function (newIid) {
+        __itmid=newIid;
+    }
+       this.getQty=function (){
+        return __qty;
+    }
+    this.setQty=function (newQty) {
+        __qty=newQty;
     }
     this.getDate=function (){
         return __date;

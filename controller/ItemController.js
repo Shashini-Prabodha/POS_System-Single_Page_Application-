@@ -1,3 +1,8 @@
+$('#itemLink').click(function () {
+    $('#ItemSection').fadeIn(1000);
+});
+
+
 $('#floatingInputItemID').on('keyup', function (event) {
 
         if (event.key == 'Enter') {
@@ -29,12 +34,20 @@ $('#floatingInputUPrice').on('keyup', function (event) {
 $('#floatingInputQty').on('keyup', function (event) {
 
         if (event.key == 'Enter') {
-            $('.foodType').focus();
+            $('#formFile').focus();
         }
         checkQty();
     }
 );
-$('.foodType').on('keyup', function (event) {
+$('#formFile').on('keyup', function (event) {
+
+        if (event.key == 'Enter') {
+            $('#rbtnMeal').focus();
+        }
+    }
+);
+
+$('#rbtnMeal,#rbtnDes').on('keyup', function (event) {
 
         if (event.key == 'Enter') {
             $('#saveItem').focus();
@@ -42,14 +55,12 @@ $('.foodType').on('keyup', function (event) {
         // checkQty();
     }
 );
-
-
 //key event to save
 $('#saveItem').on('keyup', function (event) {
 
     if (event.key == 'Enter') {
         $('#floatingInputItemID').focus();
-        let res = saveItem($('#floatingInputItemID').val(), $('#floatingInputItemName').val(), $('#floatingInputUPrice').val(), $('#floatingInputQty').val(), $('#formFile').val(), getSelectedRbtn(),imgsrc);
+        let res = saveItem($('#floatingInputItemID').val(), $('#floatingInputItemName').val(), $('#floatingInputUPrice').val(), $('#floatingInputQty').val(), $('#formFile').val(), getSelectedRbtn(), imgsrc);
         if (res) {
             clearAllItemText();
             $('#floatingInputItemID').focus();
@@ -59,23 +70,43 @@ $('#saveItem').on('keyup', function (event) {
 
 });
 
-$('#txtSearchCust').on('keyup', function (event) {
+$('#txtSearchItem').on('keyup', function (event) {
 
         if (event.key == 'Enter') {
             $('#btnItemSearch').focus();
         }
     }
 );
+$('#btnItemSearch').click(function () {
 
-$('#btnCustomerSearch').on('keyup', function (event) {
 
-        if (event.key == 'Enter') {
-
-            let item = searchItem($('#txtSearchItem').val());
+        let item = searchItem($('#txtSearchItem').val());
+        console.log(item)
+        if (item == null) {
+            alert("Can't Found Item ")
+        } else {
             $('#floatingInputItemID').val(item.getItemID());
             $('#floatingInputItemName').val(item.getItemName());
             $('#floatingInputUPrice').val(item.getItemUPrice());
             $('#floatingInputQty').val(item.getItemQty());
+        }
+
+    }
+);
+$('#btnItemSearch').on('keyup', function (event) {
+
+        if (event.key == 'Enter') {
+
+            let item = searchItem($('#txtSearchItem').val());
+            console.log(item)
+            if (item == null) {
+                alert("Can't Found Item ")
+            } else {
+                $('#floatingInputItemID').val(item.getItemID());
+                $('#floatingInputItemName').val(item.getItemName());
+                $('#floatingInputUPrice').val(item.getItemUPrice());
+                $('#floatingInputQty').val(item.getItemQty());
+            }
         }
     }
 );
@@ -174,6 +205,7 @@ function saveItem(id, name, uprice, qty, img, type,) {
 
                         });
                         // $('#floatingInputCID').focus();
+                        dblItemClick();
                         return true;
                     }
                 } else {
@@ -198,9 +230,10 @@ function deleteItems(id) {
     if (item != null) {
         let number = itemArr.indexOf(item);
         itemArr.splice(number, 1);
-
         //load all items to table
         loadItemtoTheTable();
+        clearAllItemText();
+        $('#floatingInputItemID').val(genatareItemID());
 
         return true;
     } else {
@@ -215,36 +248,40 @@ function updateItems(id, name, uprice, qty) {
         if (checkItemName()) {
             if (checkUPrice()) {
                 if (checkQty()) {
-                    let item = searchItem(id);
-                    if (item != null) {
-                        item.setItemName(name);
-                        item.setItemUPrice(uprice);
-                        item.setItemQty(qty);
+                    if (checkFImg()) {
+                        let item = searchItem(id);
+                        if (item != null) {
+                            item.setItemName(name);
+                            item.setItemUPrice(uprice);
+                            item.setItemQty(qty);
 
-                        //load all item to table
-                        loadItemtoTheTable();
-                        inputFieldColor();
+                            //load all item to table
+                            loadItemtoTheTable();
+                            inputFieldColor();
 
-                        $('#tblItem tbody tr').click(function () {
-                            let id = $(this).children('td:eq(0)').text();
-                            let name = $(this).children('td:eq(1)').text();
-                            let uprice = $(this).children('td:eq(2)').text();
-                            let qty = $(this).children('td:eq(3)').text();
+                            $('#tblItem tbody tr').click(function () {
+                                let id = $(this).children('td:eq(0)').text();
+                                let name = $(this).children('td:eq(1)').text();
+                                let uprice = $(this).children('td:eq(2)').text();
+                                let qty = $(this).children('td:eq(3)').text();
 
 
-                            $('#floatingInputItemID').val(id);
-                            $('#floatingInputItemName').val(name);
-                            $('#floatingInputUPrice').val(uprice);
-                            $('#floatingInputQty').val(qty);
+                                $('#floatingInputItemID').val(id);
+                                $('#floatingInputItemName').val(name);
+                                $('#floatingInputUPrice').val(uprice);
+                                $('#floatingInputQty').val(qty);
 
-                            // $('#floatingInputCID').attr('disabled', 'disabled');
+                                // $('#floatingInputCID').attr('disabled', 'disabled');
 
-                        });
-                        return true;
+                            });
+                            dblItemClick();
+                            return true;
+                        } else {
+                            return false;
+                        }
                     } else {
-                        return false;
+                        $('#formFile').css('border', '2px solid red').focus();
                     }
-
                 } else {
                     $('#floatingInputQty').css('border', '2px solid red').focus();
                 }
@@ -298,7 +335,7 @@ function loadItemtoTheTable() {
             $('#floatingInputQty').val(qty);
             console.log(img);
             let text = img.split('\\').pop();
-            $('#foodImg').attr('src','assests/icon/' + text);
+            $('#foodImg').attr('src', 'assests/icon/' + text);
 
             // $('#floatingInputCID').attr('disabled', 'disabled');
 
@@ -309,17 +346,18 @@ function loadItemtoTheTable() {
 
 //clear all items text
 function clearAllItemText() {
-    $('#floatingInputItemID').val('');
+    $('#floatingInputItemID').val(genatareItemID());
     $('#floatingInputItemName').val('');
     $('#floatingInputUPrice').val('');
     $('#floatingInputQty').val('');
     $('#txtSearchItem').val('');
-    $('#formFile').attr('src','assests/icon/nonamefood.png');
+    $('#formFile').attr('src', 'assests/icon/nonamefood.png');
 }
 
 //key events add to input fields
 function checkItemID() {
     if (/^(I)[0-9]{1,3}$/.test($('#floatingInputItemID').val())) {
+
 
         $('#floatingInputItemID').css('border', '2px solid green');
         $("#lblItemID").text(" ");
@@ -371,6 +409,13 @@ function checkQty() {
     return false;
 }
 
+function checkFImg() {
+    if ($('#formFile').text() != null)
+        return true;
+
+    return false;
+}
+
 function checkDuplicteItemID(id) {
     let allItems = getAllItem();
     for (let i in allItems) {
@@ -396,7 +441,7 @@ function genatareItemID() {
 
 $('#floatingInputItemID').val('I1');
 let imgsrc;
-    $('#formFile').on('change', function () {
+$('#formFile').on('change', function () {
     let text = $('#formFile').val().split('\\').pop();
     imgsrc = 'assests/icon/' + text;
     $('#foodImg').attr('src', imgsrc);
@@ -405,4 +450,24 @@ let imgsrc;
 
 function getSelectedRbtn(value) {
     return value;
+}
+
+function dblItemClick() {
+    //dbl click event to delete
+    $('#tblItem tr').on('dblclick', function () {
+        let itemID = $("#floatingInputItemID").val();
+
+        let option = confirm(`Do you want to Deletd ID:${itemID}`);
+        if (option) {
+            $(this).remove();
+
+            let res = deleteItems(itemID);
+            if (res) {
+                alert("Item Deleted");
+                clearAllItemText();
+            } else {
+                alert("Delete Failed")
+            }
+        }
+    });
 }

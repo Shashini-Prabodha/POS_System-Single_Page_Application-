@@ -1,10 +1,10 @@
-function Cart(ordID,itemID, name, unitPrice, qty,img) {
+function Cart(ordID,itemID, name, unitPrice, qty,buyqty) {
     var __ordID=ordID;
     var __itemID=itemID;
     var __name=name;
     var __unitPrice=unitPrice;
     var __qty=qty;
-    var __img=img;
+    var __buyqty=buyqty;
 
     this.getOrderID=function (){
         return __itemID;
@@ -36,11 +36,11 @@ function Cart(ordID,itemID, name, unitPrice, qty,img) {
     this.setItemQty=function (newQty) {
         __qty=newQty;
     }
-    this.getItemImg=function (){
-        return __img;
+    this.getItemBQty=function (){
+        return __buyqty;
     }
-    this.setItemUImg=function (newImg) {
-        __img=newImg;
+    this.setItemBQty=function (newBuy) {
+        __buyqty=newBuy;
     }
 
 }
