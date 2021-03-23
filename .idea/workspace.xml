@@ -19,7 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0dd610f-59a8-44e1-ad5f-b48991307aca" name="Default Changelist" comment="" />
+    <list default="true" id="f0dd610f-59a8-44e1-ad5f-b48991307aca" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/OrderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controller/OrderController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,10 +53,11 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assests/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assests/video" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -60,7 +65,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Facets" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -68,12 +73,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\My Work Space\POS_System(Single Page Application-JS)\assests\video" />
       <recent name="D:\My Work Space\POS_System(Single Page Application-JS)\assests\js" />
       <recent name="E:\sem 2\Boostrap\Boostrap_POS_System\src\assests\icon" />
       <recent name="E:\sem 2\Boostrap\Boostrap_POS_System\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\My Work Space\POS_System(Single Page Application-JS)\assests\video" />
       <recent name="D:\My Work Space\POS_System(Single Page Application-JS)\assests\css" />
+      <recent name="D:\My Work Space\POS_System(Single Page Application-JS)\assests\js" />
       <recent name="E:\sem 2\Boostrap\Boostrap_POS_System\assests" />
       <recent name="E:\sem 2\Boostrap\Boostrap_POS_System" />
     </key>
@@ -124,6 +132,10 @@
       <workItem from="1616254538796" duration="14518000" />
       <workItem from="1616306153107" duration="6842000" />
       <workItem from="1616321231008" duration="27313000" />
+      <workItem from="1616387060445" duration="24360000" />
+      <workItem from="1616495515892" duration="26000" />
+      <workItem from="1616500451849" duration="2000" />
+      <workItem from="1616515573091" duration="5000" />
     </task>
     <servers />
   </component>
@@ -146,28 +158,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/controller/ItemController.js</url>
-          <line>245</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/controller/CustomerController.js</url>
-          <line>148</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/controller/OrderController.js</url>
-          <line>139</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/controller/OrderController.js</url>
-          <line>331</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="9" />
+          <line>367</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

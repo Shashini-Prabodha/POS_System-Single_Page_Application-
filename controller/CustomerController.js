@@ -49,6 +49,7 @@ $('#saveCust').on('keyup', function (event) {
             clearAllCustomerText();
             // $('#floatingInputCID').focus();
             genatareCID();
+            alertSs();
         }
     }
 
@@ -87,6 +88,17 @@ $('#floatingInputCID,#floatingInputCName,#floatingInputAddr,#floatingInputTP').o
 });
 
 
+function alertSs() {
+    Swal.fire({
+        position: 'top',
+        icon: 'success',
+        text:'Saved Customer...!',
+        title: 'Succsess',
+        showConfirmButton: false,
+        timer: 1500
+    });
+}
+
 //Save customer in click btn
 $('#saveCust').click(function () {
 
@@ -95,7 +107,7 @@ $('#saveCust').click(function () {
         clearAllCustomerText();
         $('#floatingInputCID').focus();
         genatareCID();
-
+        alertSs();
     }
 
 });

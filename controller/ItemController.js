@@ -39,9 +39,13 @@ $('#floatingInputQty').on('keyup', function (event) {
         checkQty();
     }
 );
+
 $('#formFile').on('keyup', function (event) {
+        checkFileChoose();
 
         if (event.key == 'Enter') {
+            event.preventDefault();
+            $('.foodType').css('border-color', 'red');
             $('#rbtnMeal').focus();
         }
     }
@@ -55,6 +59,17 @@ $('#rbtnMeal,#rbtnDes').on('keyup', function (event) {
         // checkQty();
     }
 );
+function alertSsItm() {
+    Swal.fire({
+        position: 'top',
+        icon: 'success',
+        text:'Saved Item...!',
+        title: 'Succsess',
+        showConfirmButton: false,
+        timer: 1500
+    });
+}
+
 //key event to save
 $('#saveItem').on('keyup', function (event) {
 
@@ -62,6 +77,7 @@ $('#saveItem').on('keyup', function (event) {
         $('#floatingInputItemID').focus();
         let res = saveItem($('#floatingInputItemID').val(), $('#floatingInputItemName').val(), $('#floatingInputUPrice').val(), $('#floatingInputQty').val(), $('#formFile').val(), getSelectedRbtn(), imgsrc);
         if (res) {
+            alertSsItm();
             clearAllItemText();
             $('#floatingInputItemID').focus();
             genatareItemID();
@@ -79,37 +95,31 @@ $('#txtSearchItem').on('keyup', function (event) {
 );
 $('#btnItemSearch').click(function () {
 
+    scrhItem();
 
-        let item = searchItem($('#txtSearchItem').val());
-        console.log(item)
-        if (item == null) {
-            alert("Can't Found Item ")
-        } else {
-            $('#floatingInputItemID').val(item.getItemID());
-            $('#floatingInputItemName').val(item.getItemName());
-            $('#floatingInputUPrice').val(item.getItemUPrice());
-            $('#floatingInputQty').val(item.getItemQty());
-        }
+});
 
-    }
-);
 $('#btnItemSearch').on('keyup', function (event) {
 
-        if (event.key == 'Enter') {
+    if (event.key == 'Enter') {
+        scrhItem();
 
-            let item = searchItem($('#txtSearchItem').val());
-            console.log(item)
-            if (item == null) {
-                alert("Can't Found Item ")
-            } else {
-                $('#floatingInputItemID').val(item.getItemID());
-                $('#floatingInputItemName').val(item.getItemName());
-                $('#floatingInputUPrice').val(item.getItemUPrice());
-                $('#floatingInputQty').val(item.getItemQty());
-            }
-        }
     }
-);
+});
+
+function scrhItem() {
+    let item = searchItem($('#txtSearchItem').val());
+    console.log(item)
+    if (item == null) {
+        alert("Can't Found Item ")
+    } else {
+        $('#floatingInputItemID').val(item.getItemID());
+        $('#floatingInputItemName').val(item.getItemName());
+        $('#floatingInputUPrice').val(item.getItemUPrice());
+        $('#floatingInputQty').val(item.getItemQty());
+        setFImage(item.getItemImg());
+    }
+}
 
 $('#floatingInputItemID,#floatingInputItemName,#floatingInputUPrice,#floatingInputQty').on('keydown', function (event) {
     if (event.key == "Tab") {
@@ -117,13 +127,14 @@ $('#floatingInputItemID,#floatingInputItemName,#floatingInputUPrice,#floatingInp
     }
 });
 
-
+let Ftype;
 //Save item in click btn
 $('#saveItem').click(function () {
 
-    let res = saveItem($('#floatingInputItemID').val(), $('#floatingInputItemName').val(), $('#floatingInputUPrice').val(), $('#floatingInputQty').val(), $('#formFile').val(), 'Meal');
+    let res = saveItems($('#floatingInputItemID').val(), $('#floatingInputItemName').val(), $('#floatingInputUPrice').val(), $('#floatingInputQty').val(), $('#formFile').val(), Ftype);
     if (res) {
         clearAllItemText();
+        alertSsItm();
         $('#floatingInputItemID').focus();
         genatareItemID();
 
@@ -174,39 +185,76 @@ $('#ItemSection tr').css('cursor', 'pointer');
 
 //.............CRUD......................
 
+function checkRbtn() {
+    let val = $(".foodType input[type='radio']:checked").val();
+    if (val == null) {
+        $('#rbtnMeal').focus();
+        $('#lblRbtn').text('Please Select food type');
+        return false;
+    } else {
+        $('.foodType').css('border-color', '#bababa');
+        $('#lblRbtn').text('');
+
+        Ftype = val;
+        console.log(val);
+        return true;
+    }
+}
+
+$('#rbtnDes,#rbtnMeal').click(function () {
+    $('#lblRbtn').text('');
+    $('.foodType').css('border-color', '#bababa');
+
+});
+
+function setDef() {
+    $('#rbtnMeal').attr("checked", false);
+    console.log($('#rbtnMeal').attr("checked", false));
+    $('#rbtnDes').attr("checked", false);
+    imgsrc = 'assests/icon/nonamefood.png';
+    $('#foodImg').attr('src', imgsrc);
+    $('#formFile').val('');
+
+}
+
 //save customer
-function saveItem(id, name, uprice, qty, img, type,) {
+function saveItems(id, name, uprice, qty, img, type,) {
     if (checkItemID()) {
         if (checkItemName()) {
             if (checkUPrice()) {
                 if (checkQty()) {
-                    if (checkDuplicteItemID(id)) {
-                        $('#floatingInputItemID').css('border', '2px solid red');
-                        $("#lblItemID").text("Duplicate ID (I1)");
+                    if (checkRbtn()) {
+                        if (checkDuplicteItemID(id)) {
+                            $('#floatingInputItemID').css('border', '2px solid red');
+                            $("#lblItemID").text("Duplicate ID (I1)");
+                        } else {
+
+                            let item = new ItemDTO(id, name, uprice, qty, img, type);
+                            itemArr.push(item);
+
+                            inputFieldColor();
+                            //load all item to table
+                            loadItemtoTheTable();
+
+                            $('#tblItem tbody tr').click(function () {
+                                let id = $(this).children('td:eq(0)').text();
+                                let name = $(this).children('td:eq(1)').text();
+                                let uprice = $(this).children('td:eq(2)').text();
+                                let qty = $(this).children('td:eq(3)').text();
+
+                                $('#floatingInputItemID').val(id);
+                                $('#floatingInputItemName').val(name);
+                                $('#floatingInputUPrice').val(uprice);
+                                $('#floatingInputQty').val(qty);
+                                getSelectedRbtn();
+                                setFImage(searchItem(id).getItemImg());
+                            });
+                            // $('#floatingInputCID').focus();
+                            dblItemClick();
+                            setDef();
+                            return true;
+                        }
                     } else {
-
-                        let item = new ItemDTO(id, name, uprice, qty, img, type,);
-                        itemArr.push(item);
-
-                        inputFieldColor();
-                        //load all item to table
-                        loadItemtoTheTable();
-
-                        $('#tblItem tbody tr').click(function () {
-                            let id = $(this).children('td:eq(0)').text();
-                            let name = $(this).children('td:eq(1)').text();
-                            let uprice = $(this).children('td:eq(2)').text();
-                            let qty = $(this).children('td:eq(3)').text();
-
-                            $('#floatingInputItemID').val(id);
-                            $('#floatingInputItemName').val(name);
-                            $('#floatingInputUPrice').val(uprice);
-                            $('#floatingInputQty').val(qty);
-
-                        });
-                        // $('#floatingInputCID').focus();
-                        dblItemClick();
-                        return true;
                     }
                 } else {
                     $('#floatingInputQty').css('border', '2px solid red').focus();
@@ -346,12 +394,12 @@ function loadItemtoTheTable() {
 
 //clear all items text
 function clearAllItemText() {
-    $('#floatingInputItemID').val(genatareItemID());
+    genatareItemID();
     $('#floatingInputItemName').val('');
     $('#floatingInputUPrice').val('');
     $('#floatingInputQty').val('');
     $('#txtSearchItem').val('');
-    $('#formFile').attr('src', 'assests/icon/nonamefood.png');
+    setDef();
 }
 
 //key events add to input fields
@@ -440,13 +488,18 @@ function genatareItemID() {
 }
 
 $('#floatingInputItemID').val('I1');
+
 let imgsrc;
 $('#formFile').on('change', function () {
-    let text = $('#formFile').val().split('\\').pop();
-    imgsrc = 'assests/icon/' + text;
-    $('#foodImg').attr('src', imgsrc);
+    setFImage($('#formFile').val());
 
 });
+
+function setFImage(img) {
+    let text = img.split('\\').pop();
+    imgsrc = 'assests/icon/' + text;
+    $('#foodImg').attr('src', imgsrc);
+}
 
 function getSelectedRbtn(value) {
     return value;
@@ -470,4 +523,17 @@ function dblItemClick() {
             }
         }
     });
+}
+
+
+function checkFileChoose() {
+
+    if ($('#formFile').val() == '') {
+        imgsrc = 'assests/icon/nonamefood.png';
+        $('#foodImg').attr('src', imgsrc);
+
+    } else {
+
+    }
+    return true;
 }

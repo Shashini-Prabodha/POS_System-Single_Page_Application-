@@ -40,3 +40,4 @@ function setVisibility(hv, ov, iv, cv) {
 $('.cartSection').click(function () {
     alert('cart');
 });
+

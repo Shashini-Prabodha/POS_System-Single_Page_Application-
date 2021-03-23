@@ -1,5 +1,6 @@
 $('#orderLink').click(function () {
     $('#OrderSection').fadeIn(1000);
+
 });
 
 //set first order id
@@ -8,7 +9,11 @@ $('#orderLink').click(function () {
 $('#orderId').val("R1");
 
 function genatareOID() {
-    let LastId = orderArr[orderArr.length - 1].getOrderID();
+    $('#orderId').val('');
+
+    let arr = getOrder();
+    let ord = arr[arr.length - 1];
+    let LastId=ord.getOrdformId();
     $('#orderId').val('R' + (parseInt(LastId.split('R')[1]) + 1));
 }
 
@@ -97,19 +102,22 @@ function getOrder() {
 
 //add item to cart
 function addToCart() {
-    if (checkItem()) {
-        if (checkBQty($('#buyqty').val())) {
-            let id = $('#cmbItem option:selected').text();
-            if (duplicateItemsCheck(id)) {
+    if (checkingOrderID) {
+        if (checkItem()) {
+            if (checkBQty($('#buyqty').val())) {
+                let id = $('#cmbItem option:selected').text();
+                if (duplicateItemsCheck(id)) {
 
+                } else {
+                    let oid = $('#orderId').val();
+                    let item = searchItem(id);
+                    let cart = new Cart(oid, id, item.getItemName(), item.getItemUPrice(), item.getItemQty(), $('#buyqty').val());
+                    cartArr.push(cart);
+                    addItemToTable(id);
+                    deletecartItem(item);
+                    clearCartItem();
+                }
             } else {
-
-                let item = searchItem(id);
-                let cart = new Cart($('#orderId'), id, item.getItemName(), item.getItemUPrice(), item.getItemQty(), $('#buyqty').val());
-                cartArr.push(cart);
-                addItemToTable(id);
-                deletecartItem(item);
-                clearCartItem();
             }
         } else {
         }
@@ -148,7 +156,6 @@ function checkCustomerFill() {
     $("#lblCustomerID").text("");
     return true;
 }
-
 
 $('#buyqty').on('keyup', function () {
     checkBQty($('#buyqty').val());
@@ -350,55 +357,101 @@ function checkingCart() {
     }
 }
 
-//place order
-function placeOrderAction(oid, cid, itmid, qty, date) {
-    if (checkingDate()) {
-        console.log('chck 1');
-        if (checkCustomerFill()) {
-            console.log('chck 2');
-
-            if (checkingCart()) {
-                console.log('chck 3');
-
-                if (checkCash()) {
-                    console.log('chck 4');
-
-                    if (checkBalnce()) {
-                        console.log('chck 5');
-
-                        let ord = new OrderDTO(oid, cid, itmid, qty, date);
-                        orderArr.push(ord);
-                        return true;
-                    } else {
-                    }
-                } else {
-                    $('#cash').css('border', '2px solid red');
-                    $("#lblCash").text("Your Input Data Format is Wrong (95.50)");
-                }
-            } else {
-                $('#cmbItem').css('border', '2px solid red');
-                $("#lblOItemID").text("Add Items to cart");
-            }
-        } else {
-            $('#cmbCustIDm').css('border', '2px solid red');
-            $("#lblCustomerID").text("Select Customer ID");
-        }
-    } else {
-        $('#orderDate').css('border', '2px solid red');
-        $("#lblOrdDate").text("Choose Date");
+function checkingOrderID() {
+    if ($('#orderId').val() != null) {
+        return true
     }
     return false;
 }
+
+//place order
+function placeOrderAction(oid, cid, detail, tot, date) {
+    if (checkingOrderID()) {
+        console.log('chck ');
+
+        if (checkingDate()) {
+            console.log('chck 1');
+            if (checkCustomerFill()) {
+                console.log('chck 2');
+
+                if (checkingCart()) {
+                    console.log('chck 3');
+
+                    if (checkCash()) {
+                        console.log('chck 4');
+
+                        if (checkBalnce()) {
+                            console.log('chck 5');
+
+                            let ord = new OrderDTO(oid, cid, detail, tot, date);
+                            orderArr.push(ord);
+                            return true;
+                        } else {
+                        }
+                    } else {
+                        $('#cash').css('border', '2px solid red');
+                        $("#lblCash").text("Your Input Data Format is Wrong (95.50)");
+                    }
+                } else {
+                    $('#cmbItem').css('border', '2px solid red');
+                    $("#lblOItemID").text("Add Items to cart");
+                }
+            } else {
+                $('#cmbCustID').css('border', '2px solid red');
+                $("#lblCustomerID").text("Select Customer ID");
+            }
+        } else {
+            $('#orderDate').css('border', '2px solid red');
+            $("#lblOrdDate").text("Choose Date");
+        }
+    } else {
+
+    }
+    return false;
+}
+
+//Recipt
+function printReciept(oid, cid, detail, tot, date) {
+    let totle = $('#total').val();
+    let cash = $('#cash').val();
+    let balance = $('#balance').val();
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        html: "Order ID : <br />" + oid + "<br />Date : " + date + "<br />Customer ID : " +cid+ "<br />No of Item : " + cartArr.length + "<br />Total(Rs.) : " + totle + "<br /><br/>Cash(Rs.) : " + cash + "<br />Balanace(Rs.) : " + balance,
+        title: 'SP cafe - Receipt',
+        footer: 'Happy Customer....! Come Back...!',
+        confirmButtonText: 'Ok',
+
+    });
+
+    cartArr.splice(0, cartArr.length);
+}
+
+function printError() {
+    Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Oops, Failed Place Order',
+        text: 'Try Again...!',
+        showConfirmButton: false,
+        timer: 1500
+    });
+}
+
 
 //plase order btn event
 $('#btnPlaceOrder').click(function () {
 
 
-    let res = placeOrderAction($('#orderId').val(), $('#cmbCustID option:selected').text(), $('#cmbItem option:selected').text(), $('#buyqty').val(), $('#orderDate').val());
+    let res = placeOrderAction($('#orderId').val(), $('#cmbCustID option:selected').text(), cartArr, $('#total').val(), $('#orderDate').val());
     if (res) {
-        alert('Place order done');
+        printReciept($('#orderId').val(), $('#cmbCustID option:selected').text(), cartArr, $('#total').val(), $('#orderDate').val());
+
+        genatareOID();
+        clearForm();
     } else {
-        alert('Place order Failed');
+        printError();
 
     }
 
@@ -434,6 +487,15 @@ function checkBalnce() {
     }
 }
 
-//  $('#cash').val('0.0');
-//     $('#balance').val('0.0');
-//     $('#discount').val('0.0');
+//clear form
+
+function clearForm() {
+    loadAllCustomersID();
+    $('#tblOrderItem tbody tr').empty();
+    $('#cash').val('0.0');
+    $('#subTot').val('0.0');
+    $('#total').val('0.0');
+    $('#balance').val('0.0');
+    $('#discount').val('0.0');
+    $('#cmbCustID').focus();
+}

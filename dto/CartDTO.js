@@ -7,7 +7,7 @@ function Cart(ordID,itemID, name, unitPrice, qty,buyqty) {
     var __buyqty=buyqty;
 
     this.getOrderID=function (){
-        return __itemID;
+        return __ordID;
     }
     this.setOrderID=function (newOrdID) {
         __ordID=newOrdID;

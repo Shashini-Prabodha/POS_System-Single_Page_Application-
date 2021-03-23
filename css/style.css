@@ -50,3 +50,9 @@
     color: black;
     transition: all 0.3s ease;
 }
+.foodType{
+    border: 1px solid #bababa;
+    border-radius: 5px;
+    padding: 5px;
+    width: max-content;
+}
